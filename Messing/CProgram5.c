@@ -19,7 +19,7 @@ int main(){
         exit(0);
     }
     else{
-        printf("Memory allocation has been successful");
+        printf("Memory allocation has been successful\n");
     }
 
     for(int i = 0; i < num; i++){

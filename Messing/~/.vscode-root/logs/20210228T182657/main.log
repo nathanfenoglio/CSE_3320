@@ -1,0 +1,14 @@
+[2021-02-28 18:26:57.974] [main] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/media/sf_VM_Shared_Folder/Messing/~/.vscode-root/User'
+[2021-02-28 18:26:58.003] [main] [info] update#setState idle
+[2021-02-28 18:27:28.005] [main] [info] update#setState checking for updates
+[2021-02-28 18:27:28.007] [main] [info] update#setState idle
+[2021-02-28 19:27:28.102] [main] [info] update#setState checking for updates
+[2021-02-28 19:27:28.103] [main] [info] update#setState idle
+[2021-02-28 20:27:28.112] [main] [info] update#setState checking for updates
+[2021-02-28 20:27:28.354] [main] [info] update#setState idle
+[2021-02-28 21:51:09.300] [main] [info] update#setState checking for updates
+[2021-02-28 21:51:09.302] [main] [info] update#setState idle
+[2021-02-28 22:51:09.442] [main] [info] update#setState checking for updates
+[2021-02-28 22:51:09.479] [main] [info] update#setState idle
+[2021-03-01 05:52:46.456] [main] [info] update#setState checking for updates
+[2021-03-01 05:52:46.595] [main] [info] update#setState idle
