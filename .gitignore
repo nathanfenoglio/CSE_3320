@@ -1,1 +1,6 @@
 ~/.vscode-root
+*.o
+*.cmd
+*.builtin
+*.order
+*vscode*
