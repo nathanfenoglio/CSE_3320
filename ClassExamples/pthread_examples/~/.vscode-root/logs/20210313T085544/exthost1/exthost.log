@@ -644,3 +644,4 @@
 [2021-03-13 11:58:07.868] [exthost] [error] undefined
 [2021-03-13 11:58:27.059] [exthost] [error] [ms-vscode.cpptools] provider FAILED
 [2021-03-13 11:58:27.059] [exthost] [error] undefined
+[2021-03-13 12:07:38.416] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 756
