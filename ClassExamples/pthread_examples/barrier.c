@@ -49,6 +49,7 @@ int main (int argc, char *argv[])
    pthread_attr_init(&attr);
    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE); //make threads detachable
    //pthread_barrier_init(&b, NULL, NUM_THREADS);
+   //need to make sure to match the # of threads using the barrier to the # of threads used to initialize the barrier or it will get hung up
    pthread_barrier_init(&b, NULL, NUM_THREADS - 1); //-1 to not include the excluded thread, else it gets hung up
 
    for(t=0; t<NUM_THREADS; t++) {

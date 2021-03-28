@@ -69,6 +69,9 @@ void *dotprod(void *arg)
 		 *       structure, and unlock it upon updating.
 		 *          */
 #if 1
+		//pthread_mutex_trylock is a non-blocking lock gives a thread the option to choose 
+		//so if the thread does not get the lock, then the function returns an error code so can review the error code and not just automatically be put to sleep
+		//but may cause race issue type stuff, he says to try and figure out how to modify below to make safe...
 		int ret = pthread_mutex_trylock (&mutexsum);
                 if (ret!=0)
 			continue;

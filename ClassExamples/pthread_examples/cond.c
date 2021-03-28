@@ -1,6 +1,8 @@
+//3/23 lecture explains
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define NUM_THREADS  3
 #define TCOUNT 10
@@ -11,13 +13,14 @@ int     thread_ids[3] = {0,1,2};
 pthread_mutex_t count_mutex;
 pthread_cond_t count_threshold_cv;
 
+//2 threads will be updating the global count variable 10 times each
 void *inc_count(void *t) 
 {
   int i;
   long my_id = (long)t;
 
   for (i=0; i<TCOUNT; i++) {
-    pthread_mutex_lock(&count_mutex);
+    pthread_mutex_lock(&count_mutex);//so that count is only updated by one thread at a time
     count++;
 
     /* 
@@ -25,7 +28,8 @@ void *inc_count(void *t)
  *         reached.  Note that this occurs while mutex is locked. 
  *             */
     if (count == COUNT_LIMIT) {
-      pthread_cond_signal(&count_threshold_cv);
+      //watcher thread will be sleeping on this conditional variable, once the count reaches 12 then the watcher thread will be woken up
+      pthread_cond_signal(&count_threshold_cv); 
       printf("inc_count(): thread %ld, count = %d  Threshold reached.\n", 
              my_id, count);
       }
@@ -52,9 +56,11 @@ void *watch_count(void *t)
  *         the waiting thread, the loop will be skipped to prevent pthread_cond_wait
  *           from never returning. 
  *             */
-  pthread_mutex_lock(&count_mutex);
-  while (count<COUNT_LIMIT) {
-    pthread_cond_wait(&count_threshold_cv, &count_mutex);
+  pthread_mutex_lock(&count_mutex); //watcher thread needs to have mutex lock because updating the global count variable
+  while (count<COUNT_LIMIT) { 
+    //pthread_cond_wait should always be used with 2 locks count_mutex is given up when the thread goes to sleep and is automatically reobtained when pthread_cond_wait condition is true for that thread
+    //so the other threads will not be hung up when the condition causes the watcher thread to sleep
+    pthread_cond_wait(&count_threshold_cv, &count_mutex); //if count reaches 12 then watcher count thread will be woken up
     printf("watch_count(): thread %ld Condition signal received.\n", my_id);
     count += 125;
     printf("watch_count(): thread %ld count now = %d.\n", my_id, count);
