@@ -1,8 +1,3 @@
-/*
-The following is a sequential solution of the problem. read_f() reads the two strings from a file named
-“string.txt and num_substring() calculates the number of substrings.
-*/
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -72,7 +67,6 @@ int readf(FILE *fp){
 
 void * num_substring(void *start_offset){
     int start = *((int *)start_offset);
-    printf("start: %d\n", start);
 
     int i, j, k;
     int count;
@@ -85,8 +79,6 @@ void * num_substring(void *start_offset){
             }
             else{
                 count++;
-                //just printing
-                printf("i: %d, j: %d, count: %d\n", i, j, count);
             }
 
             //if updating global total variable, 
@@ -107,18 +99,13 @@ int main(int argc, char **argv){
     readf(fp);
 
     //n1 and n2 have already been updated by readf function and have the string sizes
-    printf("n1: %d, n2: %d\n", n1, n2);
     section_length = n1 / NUM_THREADS;
-    printf("n1modNUM_THREADS: %d\n", n1%NUM_THREADS);
 
     //divide up what is leftover amongst the available threads 
     //and add nearest whole # amount to section_length in order to cover strings that don't divide evenly
     if((n1 % NUM_THREADS) != 0){
         section_length = section_length + ((n1 % NUM_THREADS) / NUM_THREADS) + 1;
     }
-
-    //just printing
-    printf("section_length: %d\n", section_length);
 
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);

@@ -1,5 +1,0 @@
-some blah blah flam
-lsjdfljsdfljsdflssjdflssjdflsdfj
-
-test_syscall.c is at /home
-
