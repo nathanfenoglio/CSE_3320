@@ -52,6 +52,15 @@ int main(int argc, char **argv){
         exit(1);
     }
 
+    //just printing some stat stuff sbuf
+    printf("sbuf.st_atime: %ul\n", sbuf.st_atime);
+    printf("sbuf.st_ctime: %ul\n", sbuf.st_ctime);
+    printf("sbuf.st_dev: %d\n", sbuf.st_dev);
+    printf("sbuf.st_gid: %d\n", sbuf.st_gid);
+    printf("sbuf.st_mtime: %d\n", sbuf.st_mtime);
+    printf("sbuf.st_blksize: %d\n", sbuf.st_blksize);
+    printf("sbuf.st_nlink: %d\n", sbuf.st_nlink);
+
     //https://man7.org/linux/man-pages/man2/mmap.2.html
     /*
         #include <sys/mman.h>
